@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "844631780340",
+    "project_id": "redsocial-a45ed",
+    "storage_bucket": "redsocial-a45ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844631780340:android:2e43a1f1319a5b38e227a1",
+        "android_client_info": {
+          "package_name": "com.flutterflow.movieapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844631780340-gbiis38dlggunhduq9qa3qa1im0pv26e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaciwyaoijeYUDDhsaesHEBpyI7gpLuR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844631780340-gbiis38dlggunhduq9qa3qa1im0pv26e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
