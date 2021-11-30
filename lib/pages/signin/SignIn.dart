@@ -82,46 +82,12 @@ class _SignInState extends State<SignIn> {
                       ElevatedButton(
                         child: const Text('Login'),
                         onPressed: () {
+                          signInController.signInWithEmailAndPassword();
                           if (_formKey.currentState?.validate() == true) {
-                            signInController.signInWithEmailAndPassword();
+                            print('si entento ingresar');
                           }
                         },
                       ),
-                      // FFButtonWidget(
-                      //   onPressed: () async {
-                      //     setState(() => _loadingButton2 = true);
-                      //     try {
-                      //       await Navigator.push(
-                      //         context,
-                      //         MaterialPageRoute(
-                      //           builder: (context) => RegistroWidget(),
-                      //         ),
-                      //       );
-                      //     } finally {
-                      //       setState(() => _loadingButton2 = false);
-                      //     }
-                      //   },
-
-                      //   text: 'Regístrate',
-                      //   options: FFButtonOptions(
-                      //     width: 90,
-                      //     height: 30,
-                      //     color: Color(0x00FFFFFF),
-                      //     textStyle: FlutterFlowTheme.subtitle2.override(
-                      //       fontFamily: 'Lexend Deca',
-                      //       color: FlutterFlowTheme.secondaryColor,
-                      //       fontSize: 14,
-                      //       fontWeight: FontWeight.bold,
-                      //     ),
-                      //     elevation: 0,
-                      //     borderSide: BorderSide(
-                      //       color: Colors.transparent,
-                      //       width: 1,
-                      //     ),
-                      //     borderRadius: 0,
-                      //   ),
-                      //   loading: _loadingButton2,
-                      // )
                     ],
                   ),
                 ),
@@ -145,41 +111,6 @@ class _SignInState extends State<SignIn> {
                           Get.toNamed(Routes.createAccount);
                         },
                       ),
-                      // FFButtonWidget(
-                      //   onPressed: () async {
-                      //     setState(() => _loadingButton2 = true);
-                      //     try {
-                      //       await Navigator.push(
-                      //         context,
-                      //         MaterialPageRoute(
-                      //           builder: (context) => RegistroWidget(),
-                      //         ),
-                      //       );
-                      //     } finally {
-                      //       setState(() => _loadingButton2 = false);
-                      //     }
-                      //   },
-
-                      //   text: 'Regístrate',
-                      //   options: FFButtonOptions(
-                      //     width: 90,
-                      //     height: 30,
-                      //     color: Color(0x00FFFFFF),
-                      //     textStyle: FlutterFlowTheme.subtitle2.override(
-                      //       fontFamily: 'Lexend Deca',
-                      //       color: FlutterFlowTheme.secondaryColor,
-                      //       fontSize: 14,
-                      //       fontWeight: FontWeight.bold,
-                      //     ),
-                      //     elevation: 0,
-                      //     borderSide: BorderSide(
-                      //       color: Colors.transparent,
-                      //       width: 1,
-                      //     ),
-                      //     borderRadius: 0,
-                      //   ),
-                      //   loading: _loadingButton2,
-                      // )
                     ],
                   ),
                 )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie_app/components/columna_scroll_widget.dart';
 import 'package:movie_app/components/estados_usuarios_widget.dart';
 import 'package:movie_app/components/servicio_pelicul_widget.dart';
@@ -6,6 +7,7 @@ import 'package:movie_app/flutter_flow/flutter_flow_theme.dart';
 import 'package:movie_app/flutter_flow/flutter_flow_widgets.dart';
 import 'package:movie_app/nueva_nota/nueva_nota_widget.dart';
 import 'package:movie_app/nuevo_estado/nuevo_estado_widget.dart';
+import 'package:movie_app/repository/auth_repository.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final _authRepository = Get.find<AuthRepository>();
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -82,7 +85,7 @@ class _HomeState extends State<Home> {
                     Icons.people_outline,
                     color: FlutterFlowTheme.primaryColor,
                   ),
-                )
+                ),
               ],
             ),
             Expanded(
@@ -566,6 +569,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+            FloatingActionButton(onPressed: () => {_authRepository.signOut()})
           ],
         ),
       ),
