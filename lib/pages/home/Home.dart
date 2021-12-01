@@ -27,57 +27,38 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final _authRepository = Get.find<AuthRepository>();
     return Scaffold(
-        body: Container(
-            height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(color: CinappColors.purple1),
-            child: Stack(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(color: CinappColors.purple1),
+        child: Stack(
+          children: [
+            Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Image.asset('assets/vector-home.png', fit: BoxFit.fill)),
+            Column(
               children: [
-                Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    child: Image.asset('assets/vector-home.png',
-                        fit: BoxFit.fill)),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Form(
-                      child: KeyboardVisibilityBuilder(
-                          builder: (context, visible) {
-                        return Container(
-                          height: visible
-                              ? MediaQuery.of(context).size.height * 0.8
-                              : MediaQuery.of(context).size.height * 0.5,
-                          padding: EdgeInsets.all(25),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "CinApp",
-                                      style: TextStyle(
-                                          color: CinappColors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 36),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
-                    ),
-                  ],
+                Container(
+                  padding: EdgeInsets.all(100),
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    children: [
+                      Text(
+                        "CinApp",
+                        style: TextStyle(
+                            color: CinappColors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 36),
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            )));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
