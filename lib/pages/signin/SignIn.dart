@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controllers/email_signin_controller.dart';
 import 'package:movie_app/controllers/home_signin_controller.dart';
-import 'package:movie_app/flutter_flow/flutter_flow_theme.dart';
 import 'package:movie_app/navigation/routes.dart';
+import 'package:movie_app/theme/colors/Cinapp_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key? key}) : super(key: key);
@@ -36,90 +37,154 @@ class _SignInState extends State<SignIn> {
     final homeSignInController = Get.put(HomeSignInController());
 
     return Scaffold(
-      key: scaffoldKey,
-      body: Form(
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20, 40, 20, 0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+        key: scaffoldKey,
+        body: Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(color: CinappColors.purple1),
+            child: Stack(
               children: [
-                Obx(
-                  () => Visibility(
-                    visible: signInController.isLoading.value,
-                    child: const Center(child: CircularProgressIndicator()),
-                  ),
-                ),
-                Obx(
-                  () => Visibility(
-                    visible: signInController.error.value?.isNotEmpty == true,
-                    child: Text(
-                      signInController.error.value ?? '',
-                      style: const TextStyle(color: Colors.red, fontSize: 24),
+                Positioned(
+                    top: 0,
+                    left: 0,
+                    child: SvgPicture.asset(
+                      "assets/login_vector.png",
+                      width: MediaQuery.of(context).size.width,
+                    )),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Form(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        color: CinappColors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 36),
+                                  ),
+                                  Text(
+                                    "Ingresa tus datos para continuar",
+                                    style: TextStyle(
+                                        color: CinappColors.gray1,
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    controller:
+                                        signInController.emailController,
+                                    style: TextStyle(color: Colors.white),
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      labelText: 'Email',
+                                      labelStyle:
+                                          TextStyle(color: CinappColors.white),
+                                      filled: true,
+                                      fillColor: CinappColors.purple2,
+                                    ),
+                                    validator: signInController.emptyValidator,
+                                  ),
+                                  const SizedBox(height: 35),
+                                  TextFormField(
+                                    controller:
+                                        signInController.passwordController,
+                                    style: TextStyle(color: Colors.white),
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      labelText: 'Password',
+                                      labelStyle:
+                                          TextStyle(color: CinappColors.white),
+                                      filled: true,
+                                      fillColor: CinappColors.purple2,
+                                    ),
+                                    validator: signInController.emptyValidator,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  ElevatedButton(
+                                    child: const Text(
+                                      'Login',
+                                      style: TextStyle(
+                                          color: CinappColors.purple1,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: CinappColors.sky1,
+                                      fixedSize: Size(
+                                          MediaQuery.of(context).size.width,
+                                          50),
+                                    ),
+                                    onPressed: () {
+                                      signInController
+                                          .signInWithEmailAndPassword();
+                                      if (_formKey.currentState?.validate() ==
+                                          true) {
+                                        print('si entento ingresar');
+                                      }
+                                    },
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'No tienes cuenta ?',
+                                        style: TextStyle(
+                                            color: CinappColors.gray1,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      InkWell(
+                                        child: Text("Registrar",
+                                            style: TextStyle(
+                                                color: CinappColors.sky1,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w800)),
+                                        onTap: () {
+                                          Get.toNamed(Routes.createAccount);
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                const SizedBox(height: 8),
-                TextFormField(
-                  controller: signInController.emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
-                  validator: signInController.emptyValidator,
-                ),
-                const SizedBox(height: 8),
-                TextFormField(
-                  controller: signInController.passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
-                  validator: signInController.emptyValidator,
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        child: const Text('Login'),
-                        onPressed: () {
-                          signInController.signInWithEmailAndPassword();
-                          if (_formKey.currentState?.validate() == true) {
-                            print('si entento ingresar');
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8),
-                _LoginButton(
-                  text: 'Sign in with Google',
-                  imagePath: 'assets/icon_google.png',
-                  color: Colors.white,
-                  textColor: Colors.grey,
-                  onTap: () => homeSignInController.signInWithGoogle(),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        child: const Text('Registrarse'),
-                        onPressed: () {
-                          Get.toNamed(Routes.createAccount);
-                        },
-                      ),
-                    ],
-                  ),
-                )
               ],
-            ),
-          ),
-        ),
-      ),
-    );
+            )));
   }
 }
 
