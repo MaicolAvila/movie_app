@@ -43,7 +43,9 @@ class _SignInState extends State<SignIn> {
                 Positioned(
                     top: 0,
                     left: 0,
-                    child: Image.asset('assets/login_vector.png')),
+                    right: 0,
+                    child: Image.asset('assets/login_vector.png',
+                        fit: BoxFit.fill)),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,13 +53,16 @@ class _SignInState extends State<SignIn> {
                     Form(
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.8,
+                        padding: EdgeInsets.all(16),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
+                              width: MediaQuery.of(context).size.width,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     "Login",
