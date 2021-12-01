@@ -124,6 +124,7 @@ class _SignInState extends State<SignIn> {
                                         filled: true,
                                         fillColor: CinappColors.purple2,
                                       ),
+                                      obscureText: true,
                                       validator:
                                           signInController.emptyValidator,
                                     ),
