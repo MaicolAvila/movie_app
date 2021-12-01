@@ -5,7 +5,6 @@ import 'package:movie_app/controllers/email_signin_controller.dart';
 import 'package:movie_app/controllers/home_signin_controller.dart';
 import 'package:movie_app/navigation/routes.dart';
 import 'package:movie_app/theme/colors/Cinapp_colors.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key? key}) : super(key: key);
@@ -19,8 +18,6 @@ class _SignInState extends State<SignIn> {
   TextEditingController? emailAddressController;
   TextEditingController? passwordController;
   bool? passwordVisibility;
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -46,10 +43,7 @@ class _SignInState extends State<SignIn> {
                 Positioned(
                     top: 0,
                     left: 0,
-                    child: SvgPicture.asset(
-                      "assets/login_vector.png",
-                      width: MediaQuery.of(context).size.width,
-                    )),
+                    child: Image.asset('assets/login_vector.png')),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,

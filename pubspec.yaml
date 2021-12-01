@@ -41,7 +41,6 @@ dependencies:
   rxdart: ^0.26.0
   timeago:
   url_launcher:
-  flutter_svg: ^0.12.1  
   flutter_hooks: ^0.18.1
   image_picker: ^0.8.4+4
   cached_network_image: ^3.1.0+1
@@ -74,7 +73,6 @@ flutter:
     - assets/rive_animations/
     - assets/icon_google.png
     - assets/login_vector.png
-    - assets/login_vector.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
