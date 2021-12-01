@@ -58,12 +58,13 @@ class _SignUpState extends State<SignUp> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Form(
+                  key: _formKey,
                   child: KeyboardVisibilityBuilder(
                     builder: (context, visible) {
                       return Container(
                         height: visible
-                            ? MediaQuery.of(context).size.height * 0.8
-                            : MediaQuery.of(context).size.height * 0.5,
+                            ? MediaQuery.of(context).size.height * 0.5
+                            : MediaQuery.of(context).size.height * 0.8,
                         padding: EdgeInsets.all(16),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
