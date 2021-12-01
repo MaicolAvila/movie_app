@@ -51,8 +51,8 @@ class _SignUpState extends State<SignUp> {
                 top: 0,
                 left: 0,
                 right: 0,
-                child:
-                    Image.asset('assets/login_vector.png', fit: BoxFit.fill)),
+                child: Image.asset('assets/vector-registro.png',
+                    fit: BoxFit.fill)),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
