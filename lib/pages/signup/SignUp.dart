@@ -138,6 +138,7 @@ class _SignUpState extends State<SignUp> {
                                       filled: true,
                                       fillColor: CinappColors.purple2,
                                     ),
+                                    obscureText: true,
                                     validator:
                                         emailController.passwordValidator,
                                   ),
@@ -150,12 +151,13 @@ class _SignUpState extends State<SignUp> {
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
-                                      labelText: 'Password',
+                                      labelText: 'Confirm Password',
                                       labelStyle:
                                           TextStyle(color: CinappColors.white),
                                       filled: true,
                                       fillColor: CinappColors.purple2,
                                     ),
+                                    obscureText: true,
                                     validator:
                                         emailController.passwordValidator,
                                   ),
