@@ -40,16 +40,15 @@ class _HomeState extends State<Home> {
             Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(100),
-                  width: MediaQuery.of(context).size.width,
+                  padding: new EdgeInsets.all(90.0),
                   child: Column(
                     children: [
                       Text(
-                        "CinApp",
+                        "Recomendaciones",
                         style: TextStyle(
                             color: CinappColors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 36),
+                            fontSize: 30),
                       ),
                     ],
                   ),
