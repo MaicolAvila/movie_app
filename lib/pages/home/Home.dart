@@ -9,7 +9,9 @@ class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
   main() {
-    var list = [titulo, descripcion, imagen];
+    var list = [
+      {"titulo": "", "descripcion": "", "imagen": ""}
+    ];
     print(list is List); // true
   }
 
@@ -55,9 +57,9 @@ class _HomeState extends State<Home> {
                 ),
                 CardHome(),
                 CardHome(),
-                ButtonNav()
               ],
             ),
+            ButtonNav()
           ],
         ),
       ),
