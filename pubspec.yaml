@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_test:
+    sdk: flutter
   get: ^4.3.8
   auto_size_text:
   font_awesome_flutter:
@@ -46,6 +48,7 @@ dependencies:
   cached_network_image: ^3.1.0+1
   cupertino_icons: ^1.0.0
   flutter_keyboard_visibility: ^5.1.0
+  get_test: ^3.13.0
 
 
 dev_dependencies:
