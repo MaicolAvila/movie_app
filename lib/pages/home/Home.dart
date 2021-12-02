@@ -8,13 +8,6 @@ import 'package:movie_app/theme/colors/cinapp_colors.dart';
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
-  main() {
-    var list = [
-      {"titulo": "", "descripcion": "", "imagen": ""}
-    ];
-    print(list is List); // true
-  }
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -57,9 +50,9 @@ class _HomeState extends State<Home> {
                 ),
                 CardHome(),
                 CardHome(),
+                ButtonNav()
               ],
             ),
-            ButtonNav()
           ],
         ),
       ),
