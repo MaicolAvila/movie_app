@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controllers/email_create_controller.dart';
-import 'package:movie_app/flutter_flow/flutter_flow_theme.dart';
-import 'package:movie_app/flutter_flow/flutter_flow_widgets.dart';
-import 'package:movie_app/pages/home/Home.dart';
-import 'package:movie_app/pages/signin/SignIn.dart';
 import 'package:movie_app/theme/colors/cinapp_colors.dart';
 
 class SignUp extends StatefulWidget {
@@ -21,8 +17,6 @@ class _SignUpState extends State<SignUp> {
   TextEditingController? emailAddressController2;
   TextEditingController? passwordController;
   bool? passwordVisibility;
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final _formKey = GlobalKey<FormState>();

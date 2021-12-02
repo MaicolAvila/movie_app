@@ -1,15 +1,7 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/controllers/auth_controller.dart';
-import 'package:movie_app/model/user.dart';
-import 'package:movie_app/repository/my_user_repository.dart';
 
 class MessagesController extends GetxController {
-  final _userRepository = Get.find<MyUserRepository>();
-
   final nameController = TextEditingController();
   final bodyController = TextEditingController();
 

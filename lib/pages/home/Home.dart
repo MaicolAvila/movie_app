@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:movie_app/components/buttonnav.dart';
 import 'package:movie_app/components/card_home.dart';
-import 'package:movie_app/repository/auth_repository.dart';
 import 'package:movie_app/theme/colors/cinapp_colors.dart';
 
 class Home extends StatefulWidget {
@@ -13,13 +11,24 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final recomendaciones = [
+    {
+      "title": "",
+      "description": "",
+      "image": "",
+      "score": 4,
+    }
+  ];
+
+  void initState() {
+    super.initState();
+    print(recomendaciones);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _authRepository = Get.find<AuthRepository>();
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -50,9 +59,9 @@ class _HomeState extends State<Home> {
                 ),
                 CardHome(),
                 CardHome(),
-                ButtonNav()
               ],
             ),
+            ButtonNav()
           ],
         ),
       ),

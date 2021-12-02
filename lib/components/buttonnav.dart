@@ -11,12 +11,19 @@ class ButtonNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _authRepository = Get.find<AuthRepository>();
+    var recomendaciones = [
+      {
+        "title": "",
+        "description": "",
+        "image": "",
+        "score": 4,
+      }
+    ];
     return Positioned.fill(
         bottom: 0,
         child: Align(
             alignment: Alignment.center,
             child: Container(
-              alignment: Alignment.center,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
