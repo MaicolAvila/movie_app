@@ -45,9 +45,9 @@ class _HomeState extends State<Home> {
                 ),
                 CardHome(),
                 CardHome(),
-                ButtonNav()
               ],
             ),
+            ButtonNav()
           ],
         ),
       ),
