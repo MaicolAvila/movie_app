@@ -5,7 +5,6 @@ class MyUser extends Equatable {
   final String name;
   final String lastName;
   final int age;
-
   final String? image;
 
   const MyUser(this.id, this.name, this.lastName, this.age, {this.image});
