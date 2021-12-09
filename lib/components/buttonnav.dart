@@ -41,7 +41,7 @@ class ButtonNav extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        onPressed: () => {},
+                        onPressed: () => {Get.toNamed('/chat')},
                         icon: Icon(
                           CinappIcons.message_ico,
                           color: CinappColors.sky1,
@@ -49,7 +49,7 @@ class ButtonNav extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () => {},
+                        onPressed: () => {Get.toNamed('/home')},
                         icon: Icon(
                           CinappIcons.maki_cinema_ico,
                           color: CinappColors.sky1,
