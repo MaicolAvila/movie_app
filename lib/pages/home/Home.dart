@@ -14,20 +14,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final recomendaciones = [
-    {
-      "title": "",
-      "description": "",
-      "image": "",
-      "score": 4,
-    }
-  ];
-
-  void initState() {
-    super.initState();
-    print(recomendaciones);
-  }
-
   @override
   Widget build(BuildContext context) {
     return BackgroundMain(

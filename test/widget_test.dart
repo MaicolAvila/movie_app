@@ -5,12 +5,11 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movie_app/app.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:get_test/get_test.dart';
 import 'package:movie_app/pages/signin/SignIn.dart';
 import 'package:get/get.dart';
-import 'package:get_test/get_test.dart';
 import 'package:movie_app/pages/signup/SignUp.dart';
 
 void main() {
