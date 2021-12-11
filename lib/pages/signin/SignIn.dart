@@ -60,8 +60,6 @@ class _LoginState extends State<Login> {
     print('_login $theEmail $thePassword');
     try {
       await controluser.ingresarEmail(theEmail, thePassword);
-      Get.to(() => Home());
-      //Get.to(() => ListaMensajes());
     } catch (err) {
       print(err.toString());
       Get.snackbar(

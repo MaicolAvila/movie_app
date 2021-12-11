@@ -34,7 +34,7 @@ class _SignUpState extends State<SignUp> {
     print('_login $theEmail $thePassword');
     try {
       await controluser.registrarEmail(theEmail, thePassword);
-      Get.toNamed("/home");
+      // Get.toNamed("/home");
     } catch (err) {
       print(err.toString());
       Get.snackbar(
@@ -169,7 +169,7 @@ class _SignUpState extends State<SignUp> {
                                           50),
                                     ),
                                     onPressed: () {
-                                      _signUp(usuario, passwd);
+                                      _signUp(usuario.text, passwd.text);
                                     },
                                   ),
                                 ],

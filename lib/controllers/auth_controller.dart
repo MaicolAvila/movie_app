@@ -16,6 +16,9 @@ class Controllerauth extends GetxController {
   String get photo => _photo.value;
 
   Future<void> registrarEmail(dynamic _email, dynamic _passw) async {
+    print("llego al metodo");
+    print("usuario $_email");
+    print("contraseña $_passw");
     try {
       UserCredential usuario = await auth.createUserWithEmailAndPassword(
           email: _email, password: _passw);
@@ -114,7 +117,8 @@ class Controllerauth extends GetxController {
 
   Future<void> signOut() async {
     await GoogleSignIn().signOut();
-    // Get.toNamed('/signInEmail');
+    await FirebaseAuth.instance.signOut();
+    Get.toNamed('/signInEmail');
     SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.clear();
   }
