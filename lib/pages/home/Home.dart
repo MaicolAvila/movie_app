@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/components/buttonnav.dart';
 import 'package:movie_app/components/card_home.dart';
 import 'package:movie_app/theme/background/Background.dart';
 import 'package:movie_app/theme/colors/cinapp_colors.dart';

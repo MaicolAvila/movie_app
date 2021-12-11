@@ -1,5 +1,6 @@
-import 'package:firebase_database/firebase_database.dart';
+// ignore_for_file: deprecated_member_use
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/model/mensajes.dart';
 

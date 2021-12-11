@@ -1,18 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/app.dart';
-import 'package:movie_app/repository/auth_repository.dart';
-import 'package:movie_app/repository/implementations/auth_repository.dart';
-import 'package:movie_app/repository/implementations/my_user_repository.dart';
-import 'package:movie_app/repository/my_user_repository.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/app.dart';
+import 'package:movie_app/controllers/auth_controller.dart';
+import 'package:movie_app/controllers/controllerfirestore.dart';
+import 'package:movie_app/controllers/controlrealtime.dart';
+import 'package:movie_app/controllers/messages_controller.dart';
 
-void main() async {
+main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  Get.put<AuthRepository>(AuthRepositoryImp());
-  Get.put<MyUserRepository>(MyUserRepositoryImp());
-
+  Get.put(Controllerauth());
+  Get.put(ControllerRealtime());
+  Get.put(Controlchat());
+  Get.put(ControllerFirestore());
   runApp(MyApp());
 }

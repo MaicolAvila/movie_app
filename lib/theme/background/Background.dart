@@ -23,7 +23,11 @@ class BackgroundMain extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: Image.asset('assets/vector-home.png', fit: BoxFit.fill)),
-            Container(child: child),
+            Container(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.15,
+                    bottom: MediaQuery.of(context).size.height * 0.15),
+                child: child),
             ButtonNav()
           ],
         ),

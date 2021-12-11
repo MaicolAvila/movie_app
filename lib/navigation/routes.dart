@@ -5,7 +5,6 @@ import 'package:movie_app/pages/chat/chat.dart';
 import 'package:movie_app/pages/home/Home.dart';
 import 'package:movie_app/pages/signin/SignIn.dart';
 import 'package:movie_app/pages/signup/SignUp.dart';
-import 'package:movie_app/ui/splash_screen.dart';
 
 class Routes {
   static const splash = '/';
@@ -16,16 +15,16 @@ class Routes {
 
   static Route routes(RouteSettings settings) {
     switch (settings.name) {
-      case splash:
-        return _buildRoute(settings, page: const SplashScreen());
+      // case splash:
+      //   return _buildRoute(settings, page: const SplashScreen());
       case home:
         return _buildRoute(settings, page: Home());
       case chat:
         return _buildRoute(settings, page: ListaMensajes());
-      case createAccount:
-        return _buildRoute(settings, page: SignUp());
+      // case createAccount:
+      //   return _buildRoute(settings, page: SignUp());
       case signInEmail:
-        return _buildRoute(settings, page: SignIn());
+        return _buildRoute(settings, page: Login());
       default:
         throw Exception('Route does not exists');
     }

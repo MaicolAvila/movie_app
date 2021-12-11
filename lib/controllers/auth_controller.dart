@@ -1,48 +1,120 @@
-import 'dart:async';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/navigation/routes.dart';
-import 'package:movie_app/repository/auth_repository.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-enum AuthState {
-  signedOut,
-  signedIn,
-}
+class Controllerauth extends GetxController {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late Rx<dynamic> _usuarior = "Sin Registro".obs;
+  late Rx<dynamic> _uid = "".obs;
+  late Rx<dynamic> _name = "".obs;
+  late Rx<dynamic> _photo = "".obs;
 
-class AuthController extends GetxController {
-  final _authRepository = Get.find<AuthRepository>();
-  late StreamSubscription _authSubscription;
+  String get userf => _usuarior.value;
+  String get uid => _uid.value;
+  String get name => _name.value;
+  String get photo => _photo.value;
 
-  final Rx<AuthState> authState = Rx(AuthState.signedOut);
-  final Rx<AuthUser?> authUser = Rx(null);
+  Future<void> registrarEmail(dynamic _email, dynamic _passw) async {
+    try {
+      UserCredential usuario = await auth.createUserWithEmailAndPassword(
+          email: _email, password: _passw);
 
-  @override
-  void onInit() async {
-    // Just for testing. Allows the splash screen to be shown a few seconds
-    await Future.delayed(const Duration(seconds: 3));
-    _authSubscription =
-        _authRepository.onAuthStateChanged.listen(_authStateChanged);
-    super.onInit();
+      _usuarior.value = usuario.user!.email;
+      _uid.value = usuario.user!.uid;
+
+      _name.value = usuario.user!.email;
+      _photo.value =
+          'https://cdn.icon-icons.com/icons2/1508/PNG/512/systemusers_104569.png';
+
+      print(usuario);
+      await guardarusuario(_usuarior.value, _passw);
+
+      return Future.value(true);
+      // return Future.value(true);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        return Future.error('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('Correo ya Existe');
+
+        return Future.error('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
-  void _authStateChanged(AuthUser? user) {
-    if (user == null) {
-      authState.value = AuthState.signedOut;
-      Get.offAllNamed(Routes.signInEmail);
-    } else {
-      authState.value = AuthState.signedIn;
-      Get.offAllNamed(Routes.home);
+  Future<void> ingresarEmail(dynamic email, dynamic pass) async {
+    try {
+      UserCredential usuario =
+          await auth.signInWithEmailAndPassword(email: email, password: pass);
+
+      _usuarior.value = usuario.user!.email;
+      _uid.value = usuario.user!.uid;
+      _name.value = usuario.user!.email;
+      _photo.value =
+          'https://cdn.icon-icons.com/icons2/1508/PNG/512/systemusers_104569.png';
+
+      //    _photo.value = usuario.user!.photoURL;
+      await guardarusuario(_usuarior.value, pass);
+      print(usuario);
+      return Future.value(true);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('Correo no encontrado');
+        return Future.error('user-not-found');
+      } else if (e.code == 'wrong-password') {
+        print('Password incorrecto');
+        return Future.error('wrong-password');
+      }
     }
-    authUser.value = user;
+  }
+
+  Future<void> ingresarGoogle() async {
+    // Trigger the authentication flow
+
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+// Obtain the auth details from the request
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      UserCredential usuario =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      _usuarior.value = usuario.user!.email;
+      _uid.value = usuario.user!.uid;
+
+      _name.value = usuario.user!.displayName;
+      _photo.value = usuario.user!.photoURL;
+
+      return Future.value(true);
+    } catch (e) {
+      return Future.error('Error');
+    }
+  }
+
+  Future<void> guardarusuario(datos, passw) async {
+    Future<SharedPreferences> _localuser = SharedPreferences.getInstance();
+    final SharedPreferences localuser = await _localuser;
+    localuser.setString('email', datos);
+    localuser.setString('clave', passw);
+    print(localuser.getString('usuario'));
   }
 
   Future<void> signOut() async {
-    await _authRepository.signOut();
-  }
-
-  @override
-  void onClose() {
-    _authSubscription.cancel();
-    super.onClose();
+    await GoogleSignIn().signOut();
+    // Get.toNamed('/signInEmail');
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
   }
 }

@@ -18,11 +18,11 @@ void main() {
     widgetTest: (tester) async {
       expect('/', Get.currentRoute);
 
-      Get.to(SignIn());
+      Get.to(Login());
       expect('/signInEmail', Get.currentRoute);
 
-      Get.to(SignUp());
-      expect('/createAccount', Get.currentRoute);
+      // Get.to(SignUp());
+      // expect('/createAccount', Get.currentRoute);
 
       Get.back();
       expect('/signInEmail', Get.currentRoute);
@@ -30,7 +30,7 @@ void main() {
   );
   testWidgets('Login has a title', (WidgetTester tester) async {
     // Test code goes here.
-    await tester.pumpWidget(SignIn());
+    await tester.pumpWidget(Login());
     final titleLogin = find.text('Login');
 
     expect(titleLogin, findsOneWidget);

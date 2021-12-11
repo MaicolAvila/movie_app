@@ -1,24 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/controllers/auth_controller.dart';
 import 'package:movie_app/icons/cinapp_icons_icons.dart';
-import 'package:movie_app/repository/auth_repository.dart';
 import 'package:movie_app/theme/colors/cinapp_colors.dart';
 
 class ButtonNav extends StatelessWidget {
   const ButtonNav({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    final _authRepository = Get.find<AuthRepository>();
-    var recomendaciones = [
-      {
-        "title": "",
-        "description": "",
-        "image": "",
-        "score": 4,
-      }
-    ];
+    Controllerauth controluser = Get.find();
     return Positioned.fill(
         bottom: 0,
         child: Align(
@@ -73,7 +64,7 @@ class ButtonNav extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () => {_authRepository.signOut()},
+                        onPressed: () => {controluser.signOut()},
                         icon: Icon(
                           CinappIcons.signout_ico,
                           color: CinappColors.sky1,

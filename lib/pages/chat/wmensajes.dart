@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:movie_app/controllers/auth_controller.dart';
 import 'package:movie_app/controllers/messages_controller.dart';
-import 'package:movie_app/controllers/my_user_controller.dart';
 
 class MensajeWidget extends StatelessWidget {
   final String texto;
@@ -20,7 +19,7 @@ class MensajeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Controlchat controlchat = Get.find();
-    MyUserController controluser = Get.find();
+    Controllerauth controluser = Get.find();
     return Padding(
       padding: const EdgeInsets.only(left: 1, top: 5, right: 1, bottom: 2),
       child: Column(children: [
@@ -32,6 +31,7 @@ class MensajeWidget extends StatelessWidget {
           ),
           title: Text(name),
           subtitle: Text(email),
+          trailing: Text(DateFormat('kk:mma').format(fecha).toString()),
         ),
         Container(
             decoration: BoxDecoration(boxShadow: [
@@ -45,14 +45,17 @@ class MensajeWidget extends StatelessWidget {
                 padding: EdgeInsets.only(left: 18),
                 onPressed: null,
                 onLongPress: () {
-                  // if (controluser.id == id) {
-                  //   controlchat.deleteMensaje(idmensaje);
-                  // }
+                  if (controluser.uid == uid) {
+                    controlchat.deleteMensaje(idmensaje);
+                  }
                 },
                 child: Wrap(
                   children: <Widget>[
                     Container(
                         child: Row(
+                      mainAxisAlignment: (controluser.uid == uid)
+                          ? MainAxisAlignment.end
+                          : MainAxisAlignment.start,
                       children: [
                         Text(texto),
                       ],
