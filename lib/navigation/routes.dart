@@ -21,8 +21,8 @@ class Routes {
         return _buildRoute(settings, page: Home());
       case chat:
         return _buildRoute(settings, page: ListaMensajes());
-      // case createAccount:
-      //   return _buildRoute(settings, page: SignUp());
+      case createAccount:
+        return _buildRoute(settings, page: SignUp());
       case signInEmail:
         return _buildRoute(settings, page: Login());
       default:

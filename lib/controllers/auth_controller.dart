@@ -28,7 +28,8 @@ class Controllerauth extends GetxController {
           'https://cdn.icon-icons.com/icons2/1508/PNG/512/systemusers_104569.png';
 
       print(usuario);
-      await guardarusuario(_usuarior.value, _passw);
+      await guardarusuario(_usuarior.value, _passw)
+          .then((value) => ingresarEmail(usuario, _passw));
 
       return Future.value(true);
       // return Future.value(true);

@@ -30,6 +30,22 @@ class _SignUpState extends State<SignUp> {
     passwordVisibility = false;
   }
 
+  _signUp(theEmail, thePassword) async {
+    print('_login $theEmail $thePassword');
+    try {
+      await controluser.registrarEmail(theEmail, thePassword);
+      Get.toNamed("/home");
+    } catch (err) {
+      print(err.toString());
+      Get.snackbar(
+        "Login",
+        err.toString(),
+        icon: Icon(Icons.person, color: Colors.red),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Controllerauth controluser = Get.find();
@@ -153,11 +169,7 @@ class _SignUpState extends State<SignUp> {
                                           50),
                                     ),
                                     onPressed: () {
-                                      if (_formKey.currentState?.validate() ==
-                                          true) {
-                                        // Get.find<EmailCreateController>()
-                                        //     .createUserWithEmailAndPassword();
-                                      }
+                                      _signUp(usuario, passwd);
                                     },
                                   ),
                                 ],

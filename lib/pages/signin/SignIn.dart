@@ -188,7 +188,7 @@ class _LoginState extends State<Login> {
                                     fontSize: 12,
                                     fontWeight: FontWeight.w800)),
                             onTap: () {
-                              _login(usuario.text, passwd.text);
+                              Get.toNamed("/createAccount");
                             },
                           )
                         ],
