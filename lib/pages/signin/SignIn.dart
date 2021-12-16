@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controllers/auth_controller.dart';
@@ -35,7 +36,6 @@ class _LoginState extends State<Login> {
         usuario.text = _email;
         passwd.text = _passw!;
         _inicio(usuario.text, passwd.text);
-        _google();
       });
       return;
     }
@@ -56,28 +56,11 @@ class _LoginState extends State<Login> {
     }
   }
 
-  _google() async {
-    try {
-      await controluser.ingresarGoogle();
-      Get.to(() => Home());
-      //Get.to(() => ListaMensajes());
-    } catch (err) {
-      print(err.toString());
-      Get.snackbar(
-        "Login",
-        err.toString(),
-        icon: Icon(Icons.person, color: Colors.red),
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: Container(
+      body: Container(
+          height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(color: CinappColors.purple1),
           child: Stack(
             children: [
@@ -88,122 +71,153 @@ class _LoginState extends State<Login> {
                   child:
                       Image.asset('assets/login_vector.png', fit: BoxFit.fill)),
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 80.0,
-                    backgroundImage: NetworkImage(
-                        'https://us.123rf.com/450wm/rashadashurov/rashadashurov1911/rashadashurov191101490/133749415-concepto-de-cuenta-icono-de-l%C3%ADnea-azul-elemento-delgado-simple-sobre-fondo-oscuro-dise%C3%B1o-de-s%C3%ADmbolo-.jpg?ver=6'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    controller: usuario,
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      labelText: 'Email',
-                      labelStyle: TextStyle(color: CinappColors.white),
-                      filled: true,
-                      fillColor: CinappColors.purple2,
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 35),
-                  TextFormField(
-                    controller: passwd,
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      labelText: 'Password',
-                      labelStyle: TextStyle(color: CinappColors.white),
-                      filled: true,
-                      fillColor: CinappColors.purple2,
-                    ),
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 35),
-                  Container(
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                            child: const Text(
-                              'Login',
-                              style: TextStyle(
-                                  color: CinappColors.purple1,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w800),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              primary: CinappColors.sky1,
-                              fixedSize:
-                                  Size(MediaQuery.of(context).size.width, 50),
-                            ),
-                            onPressed: () {
-                              if (_formKey.currentState!.validate())
-                                _inicio(usuario.text, passwd.text);
-                            }),
-                        const SizedBox(height: 15),
-                        Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Form(
+                    child:
+                        KeyboardVisibilityBuilder(builder: (context, visible) {
+                      print(visible);
+                      return Container(
+                        height: visible
+                            ? MediaQuery.of(context).size.height * 0.5
+                            : MediaQuery.of(context).size.height * 0.8,
+                        padding: EdgeInsets.all(16),
+                        child: Column(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'No tienes cuenta ?',
-                              style: TextStyle(
-                                  color: CinappColors.gray1,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w800),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        color: CinappColors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 36),
+                                  ),
+                                  Text(
+                                    "Ingresa tus datos para continuar",
+                                    style: TextStyle(
+                                        color: CinappColors.gray1,
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 12),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              width: 10,
+                            Container(
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    controller: usuario,
+                                    style: TextStyle(color: Colors.white),
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      labelText: 'Email',
+                                      labelStyle:
+                                          TextStyle(color: CinappColors.white),
+                                      filled: true,
+                                      fillColor: CinappColors.purple2,
+                                    ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter some text';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  const SizedBox(height: 35),
+                                  TextFormField(
+                                    controller: passwd,
+                                    style: TextStyle(color: Colors.white),
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      labelText: 'Password',
+                                      labelStyle:
+                                          TextStyle(color: CinappColors.white),
+                                      filled: true,
+                                      fillColor: CinappColors.purple2,
+                                    ),
+                                    obscureText: true,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter some text';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                            InkWell(
-                              child: Text("Registrar",
-                                  style: TextStyle(
-                                      color: CinappColors.sky1,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w800)),
-                              onTap: () {
-                                Get.toNamed("/createAccount");
-                              },
-                            )
+                            Container(
+                              child: Column(
+                                children: [
+                                  ElevatedButton(
+                                      child: const Text(
+                                        'Login',
+                                        style: TextStyle(
+                                            color: CinappColors.purple1,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: CinappColors.sky1,
+                                        fixedSize: Size(
+                                            MediaQuery.of(context).size.width,
+                                            50),
+                                      ),
+                                      onPressed: () {
+                                        if (_formKey.currentState!.validate())
+                                          _inicio(usuario.text, passwd.text);
+                                      }),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'No tienes cuenta ?',
+                                        style: TextStyle(
+                                            color: CinappColors.gray1,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      InkWell(
+                                        child: Text("Registrar",
+                                            style: TextStyle(
+                                                color: CinappColors.sky1,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w800)),
+                                        onTap: () {
+                                          Get.toNamed("/createAccount");
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
-                      ],
-                    ),
+                      );
+                    }),
                   ),
                 ],
               ),
             ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _google();
-        },
-        child: FaIcon(
-          FontAwesomeIcons.google,
-          color: Colors.white,
-        ),
-      ),
+          )),
     );
   }
 }
