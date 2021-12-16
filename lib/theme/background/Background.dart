@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/components/buttonnav.dart';
 import 'package:movie_app/theme/colors/cinapp_colors.dart';

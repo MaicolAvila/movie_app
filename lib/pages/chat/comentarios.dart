@@ -7,6 +7,7 @@ import 'package:movie_app/controllers/auth_controller.dart';
 import 'package:movie_app/controllers/messages_controller.dart';
 import 'package:movie_app/model/mensajes.dart';
 import 'package:movie_app/theme/background/Background.dart';
+import 'package:movie_app/theme/colors/cinapp_colors.dart';
 
 class ListaMensajes extends StatefulWidget {
   ListaMensajes({Key? key}) : super(key: key);
@@ -39,16 +40,27 @@ class ListaMensajesState extends State<ListaMensajes> {
                             child: TextField(
                                 keyboardType: TextInputType.text,
                                 controller: _mensajeController,
-                                onChanged: (text) => setState(() {}),
-                                onSubmitted: (input) {
+                                onChanged: (
+                                  text,
+                                ) =>
+                                    setState(() {}),
+                                onSubmitted: (
+                                  input,
+                                ) {
                                   _enviarMensaje();
                                 },
                                 decoration: const InputDecoration(
-                                    hintText: 'Escribe un mensaje')))),
+                                  labelText: 'Escribe un comentario',
+                                  labelStyle:
+                                      TextStyle(color: CinappColors.white),
+                                )))),
                     IconButton(
-                        icon: Icon(_puedoEnviarMensaje()
-                            ? CupertinoIcons.arrow_right_circle_fill
-                            : CupertinoIcons.arrow_right_circle),
+                        color: CinappColors.white,
+                        icon: Icon(
+                          _puedoEnviarMensaje()
+                              ? CupertinoIcons.arrow_right_circle_fill
+                              : CupertinoIcons.arrow_right_circle,
+                        ),
                         onPressed: () {
                           _enviarMensaje();
                         })

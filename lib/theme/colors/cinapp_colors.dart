@@ -13,4 +13,6 @@ class CinappColors {
   static const Color gray1 = Color(0xff8a8a8a);
 
   static const Color purple3 = Color(0xff39304D);
+
+  static const Color yellow = Color(0xffE9BE51);
 }

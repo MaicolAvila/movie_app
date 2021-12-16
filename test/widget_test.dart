@@ -10,7 +10,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_test/get_test.dart';
 import 'package:movie_app/pages/signin/SignIn.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/pages/signup/SignUp.dart';
 
 void main() {
   getTest(

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/controllers/auth_controller.dart';
 import 'package:movie_app/controllers/messages_controller.dart';
+import 'package:movie_app/theme/colors/cinapp_colors.dart';
 
 class MensajeWidget extends StatelessWidget {
   final String texto;
@@ -29,24 +30,34 @@ class MensajeWidget extends StatelessWidget {
             backgroundImage: NetworkImage(photo),
             backgroundColor: Colors.white,
           ),
-          title: Text(name),
-          subtitle: Text(email),
-          trailing: Text(DateFormat('kk:mma').format(fecha).toString()),
+          title: Text(name,
+              style: TextStyle(
+                color: CinappColors.white,
+              )),
+          // subtitle: Text(email,
+          // style: TextStyle(
+          // color: CinappColors.white,
+          // )),
         ),
         Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                  color: Colors.grey[350]!,
-                  blurRadius: 2.0,
-                  offset: Offset(0, 1.0))
-            ], borderRadius: BorderRadius.circular(50.0), color: Colors.white),
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      color: CinappColors.white,
+                      blurRadius: 2.0,
+                      offset: Offset(0, 1.0))
+                ],
+                borderRadius: BorderRadius.circular(50.0),
+                color: CinappColors.purple2),
             child: MaterialButton(
-                disabledTextColor: Colors.black87,
+                disabledTextColor: CinappColors.white,
                 padding: EdgeInsets.only(left: 18),
                 onPressed: null,
                 onLongPress: () {
                   if (controluser.uid == uid) {
-                    controlchat.deleteMensaje(idmensaje);
+                    controlchat.deleteMensaje(
+                      idmensaje,
+                    );
                   }
                 },
                 child: Wrap(
@@ -57,7 +68,10 @@ class MensajeWidget extends StatelessWidget {
                           ? MainAxisAlignment.end
                           : MainAxisAlignment.start,
                       children: [
-                        Text(texto),
+                        Text(texto,
+                            style: TextStyle(
+                              color: CinappColors.white,
+                            )),
                       ],
                     ))
                   ],

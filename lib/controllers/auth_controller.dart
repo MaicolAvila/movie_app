@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:movie_app/pages/home/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Controllerauth extends GetxController {
@@ -49,10 +50,10 @@ class Controllerauth extends GetxController {
     }
   }
 
-  Future<void> ingresarEmail(dynamic email, dynamic pass) async {
+  Future<void> ingresarEmail(dynamic email1, dynamic pass) async {
     try {
       UserCredential usuario =
-          await auth.signInWithEmailAndPassword(email: email, password: pass);
+          await auth.signInWithEmailAndPassword(email: email1, password: pass);
 
       _usuarior.value = usuario.user!.email;
       _uid.value = usuario.user!.uid;
@@ -63,7 +64,9 @@ class Controllerauth extends GetxController {
       //    _photo.value = usuario.user!.photoURL;
       await guardarusuario(_usuarior.value, pass);
       print(usuario);
-      return Future.value(true);
+      Get.to(() => Home());
+
+      //return Future.value(true);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('Correo no encontrado');

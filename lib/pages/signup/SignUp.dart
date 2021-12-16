@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controllers/auth_controller.dart';
-import 'package:movie_app/controllers/email_create_controller.dart';
+import 'package:movie_app/pages/home/Home.dart';
 import 'package:movie_app/theme/colors/cinapp_colors.dart';
 
 class SignUp extends StatefulWidget {
@@ -34,7 +33,7 @@ class _SignUpState extends State<SignUp> {
     print('_login $theEmail $thePassword');
     try {
       await controluser.registrarEmail(theEmail, thePassword);
-      // Get.toNamed("/home");
+      Get.to(Home());
     } catch (err) {
       print(err.toString());
       Get.snackbar(
