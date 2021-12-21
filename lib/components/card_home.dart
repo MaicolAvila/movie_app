@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/theme/colors/cinapp_colors.dart';
+import 'package:movie_app/ui/theme/colors/cinapp_colors.dart';
 
 class CardHome extends StatelessWidget {
   const CardHome({Key? key}) : super(key: key);

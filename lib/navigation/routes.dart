@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:movie_app/pages/chat/comentarios.dart';
-import 'package:movie_app/pages/home/Home.dart';
-import 'package:movie_app/pages/signin/SignIn.dart';
-import 'package:movie_app/pages/signup/SignUp.dart';
+import 'package:movie_app/ui/locations/locations_screen.dart';
+import 'package:movie_app/ui/pages/chat/comentarios.dart';
+import 'package:movie_app/ui/pages/home/Home.dart';
+import 'package:movie_app/ui/pages/signin/SignIn.dart';
+import 'package:movie_app/ui/pages/signup/SignUp.dart';
 
 class Routes {
   static const splash = '/';
@@ -12,6 +13,7 @@ class Routes {
   static const signInEmail = '/signInEmail';
   static const home = '/home';
   static const comentarios = '/comentarios';
+  static const localizacion = '/locations_screen';
 
   static Route routes(RouteSettings settings) {
     switch (settings.name) {
@@ -25,6 +27,8 @@ class Routes {
         return _buildRoute(settings, page: SignUp());
       case signInEmail:
         return _buildRoute(settings, page: Login());
+      case localizacion:
+        return _buildRoute(settings, page: Locations());
       default:
         throw Exception('Route does not exists');
     }

@@ -1,37 +1,18 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:get_test/get_test.dart';
-import 'package:movie_app/pages/signin/SignIn.dart';
 import 'package:get/get.dart';
 
-void main() {
-  getTest(
-    "test description",
-    widgetTest: (tester) async {
-      expect('/', Get.currentRoute);
 
-      Get.to(Login());
-      expect('/signInEmail', Get.currentRoute);
-
-      // Get.to(SignUp());
-      // expect('/createAccount', Get.currentRoute);
-
-      Get.back();
-      expect('/signInEmail', Get.currentRoute);
-    },
-  );
-  testWidgets('Login has a title', (WidgetTester tester) async {
-    // Test code goes here.
-    await tester.pumpWidget(Login());
-    final titleLogin = find.text('Login');
-
-    expect(titleLogin, findsOneWidget);
-  });
-}
+// void main() async {
+//   final firestore = FakeFirebaseFirestore
+//   ();
+//   testWidgets('Simple hello test', (WidgetTester tester) async {
+//     Get.put(Controlchat());
+//     await tester.pumpWidget(MaterialApp(
+//       home: Scaffold(
+//         body: ListaMensajes(),
+//       ),
+//     ));
+//   });
+// }

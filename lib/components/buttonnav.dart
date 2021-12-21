@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/controllers/auth_controller.dart';
+import 'package:movie_app/domain/controllers/auth_controller.dart';
 import 'package:movie_app/icons/cinapp_icons_icons.dart';
-import 'package:movie_app/theme/colors/cinapp_colors.dart';
+import 'package:movie_app/ui/theme/colors/cinapp_colors.dart';
 
 class ButtonNav extends StatelessWidget {
   const ButtonNav({Key? key}) : super(key: key);
@@ -47,7 +47,7 @@ class ButtonNav extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () => {},
+                        onPressed: () => {Get.toNamed('/locations_screen')},
                         icon: Icon(
                           CinappIcons.map_pin_ico,
                           color: CinappColors.sky1,
